@@ -3,139 +3,630 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolvi - Soluções Rápidas por R$ 2,97</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; min-height: 100vh; }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        
-        .header { text-align: center; padding: 40px 20px; }
-        .logo { font-size: 48px; font-weight: bold; margin-bottom: 10px; background: linear-gradient(90deg, #28a745, #20c997); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tagline { font-size: 20px; opacity: 0.9; margin-bottom: 30px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        
-        .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 25px; text-decoration: none; color: white; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        
-        .card-icon { font-size: 40px; margin-bottom: 15px; }
-        .card-title { font-size: 22px; font-weight: bold; margin-bottom: 10px; }
-        .card-desc { opacity: 0.8; font-size: 15px; line-height: 1.5; }
-        
-        .footer { text-align: center; margin-top: 60px; padding: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; opacity: 0.7; }
-        
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-            .logo { font-size: 36px; }
+    <title>Resolvi - 12 Nichos de Solução por Apenas R$ 2,97 | Resultado em 5 Minutos</title>
+    <meta name="description" content="Resolva qualquer problema do dia a dia por apenas R$2,97. 12 nichos: dinheiro, saúde, carro, casa, tecnologia, empresa, estudo, pet, corpo, casamento, viagem e mercado.">
+    <meta name="keywords" content="resolver problemas, R$2,97, soluções rápidas, economizar dinheiro, saúde barata, carro conserto, casa reforma, tecnologia barata">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Resolvi - 12 Problemas Solucionados por R$ 2,97">
+    <meta property="og:description" content="De desconto em boletos a consulta médica barata. Tudo resolvido em 5 minutos por menos de um café.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80">
+    <meta property="og:url" content="https://resolvi-site.github.io/site/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Resolvi">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Resolvi - Tudo por R$ 2,97">
+    <meta name="twitter:description" content="12 nichos de solução imediata. Economize centenas de reais em minutos.">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Resolvi",
+        "url": "https://resolvi-site.github.io/site/",
+        "description": "Soluções rápidas para problemas do dia a dia por apenas R$ 2,97",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://resolvi-site.github.io/site/#search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
         }
+    }
+    </script>
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #28a745;
+            --primary-dark: #1e7e34;
+            --secondary: #20c997;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #16213e;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --text-light: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== HEADER HERO ===== */
+        .header-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(40, 167, 69, 0.15) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .logo-main {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 5px 25px rgba(40, 167, 69, 0.3);
+        }
+        
+        .tagline-main {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .price-highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 25px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: 30px auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .benefit-item {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ===== NICHO GRID ===== */
+        .nicho-section {
+            padding: 40px 0 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .grid-nichos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .nicho-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            text-decoration: none;
+            color: var(--text-light);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nicho-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(40, 167, 69, 0.3);
+        }
+        
+        .nicho-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .nicho-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .nicho-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .nicho-description {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .nicho-services {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .nicho-services li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-muted);
+        }
+        
+        .nicho-services li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .nicho-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ===== NICHOS ESPECÍFICOS ===== */
+        .dinheiro-card { background: linear-gradient(135deg, rgba(40, 167, 69, 0.15) 0%, rgba(32, 201, 151, 0.15) 100%); }
+        .saude-card { background: linear-gradient(135deg, rgba(220, 53, 69, 0.15) 0%, rgba(253, 126, 20, 0.15) 100%); }
+        .carro-card { background: linear-gradient(135deg, rgba(13, 202, 240, 0.15) 0%, rgba(0, 123, 255, 0.15) 100%); }
+        .casa-card { background: linear-gradient(135deg, rgba(111, 66, 193, 0.15) 0%, rgba(153, 102, 255, 0.15) 100%); }
+        .tech-card { background: linear-gradient(135deg, rgba(32, 201, 151, 0.15) 0%, rgba(20, 167, 108, 0.15) 100%); }
+        .empresa-card { background: linear-gradient(135deg, rgba(108, 117, 125, 0.15) 0%, rgba(73, 80, 87, 0.15) 100%); }
+        .estudo-card { background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(253, 126, 20, 0.15) 100%); }
+        .pet-card { background: linear-gradient(135deg, rgba(253, 126, 20, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%); }
+        .corpo-card { background: linear-gradient(135deg, rgba(220, 53, 69, 0.15) 0%, rgba(255, 107, 107, 0.15) 100%); }
+        .casamento-card { background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 193, 7, 0.15) 100%); }
+        .viagem-card { background: linear-gradient(135deg, rgba(0, 123, 255, 0.15) 0%, rgba(13, 202, 240, 0.15) 100%); }
+        .mercado-card { background: linear-gradient(135deg, rgba(40, 167, 69, 0.15) 0%, rgba(32, 201, 151, 0.15) 100%); }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(32, 201, 151, 0.1) 100%);
+            border-radius: var(--radius);
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            .logo-main { font-size: 3rem; }
+            .price-highlight { font-size: 1.5rem; padding: 12px 25px; }
+            .grid-nichos { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.8rem; }
+            .nicho-card { padding: 25px; }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-main { font-size: 2.5rem; }
+            .price-highlight { font-size: 1.3rem; }
+            .header-hero { padding: 40px 20px 30px; }
+            .benefits-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nicho-card {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .nicho-card:nth-child(1) { animation-delay: 0.1s; }
+        .nicho-card:nth-child(2) { animation-delay: 0.2s; }
+        .nicho-card:nth-child(3) { animation-delay: 0.3s; }
+        .nicho-card:nth-child(4) { animation-delay: 0.4s; }
+        .nicho-card:nth-child(5) { animation-delay: 0.5s; }
+        .nicho-card:nth-child(6) { animation-delay: 0.6s; }
+        .nicho-card:nth-child(7) { animation-delay: 0.7s; }
+        .nicho-card:nth-child(8) { animation-delay: 0.8s; }
+        .nicho-card:nth-child(9) { animation-delay: 0.9s; }
+        .nicho-card:nth-child(10) { animation-delay: 1.0s; }
+        .nicho-card:nth-child(11) { animation-delay: 1.1s; }
+        .nicho-card:nth-child(12) { animation-delay: 1.2s; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="logo">RESOLVI</div>
-            <div class="tagline">Soluções rápidas para problemas do dia a dia</div>
-            <p style="font-size: 18px; margin-top: 20px; opacity: 0.9;">
-                🔓 Resolva qualquer problema por apenas <strong style="color:#28a745">R$ 2,97</strong><br>
-                ⏱️ Resultado em menos de 5 minutos
-            </p>
-        </div>
+        <!-- HERO SECTION -->
+        <header class="header-hero">
+            <h1 class="logo-main">RESOLVI</h1>
+            <p class="tagline-main">Soluções rápidas para 12 problemas do dia a dia</p>
+            
+            <div class="price-highlight">
+                🚀 Tudo por apenas R$ 2,97 cada
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">✅ Resultado em 5 minutos</div>
+                <div class="benefit-item">✅ Sem cadastro necessário</div>
+                <div class="benefit-item">✅ Apenas R$ 2,97 cada</div>
+                <div class="benefit-item">✅ Suporte via WhatsApp</div>
+            </div>
+        </header>
         
-        <div class="grid">
-            <!-- NICHO 1: DINHEIRO -->
-            <a href="desconto-boletos.html" class="card">
-                <div class="card-icon">💰</div>
-                <div class="card-title">DINHEIRO</div>
-                <div class="card-desc">Descontos em boletos, juros do cartão, empréstimos, nome limpo</div>
-            </a>
+        <!-- NICHO GRID -->
+        <section class="nicho-section">
+            <h2 class="section-title">Escolha seu Nicho de Solução</h2>
             
-            <!-- NICHO 2: SAÚDE -->
-            <a href="saude/remedio-barato.html" class="card">
-                <div class="card-icon">🏥</div>
-                <div class="card-title">SAÚDE</div>
-                <div class="card-desc">Remédios baratos, plano de saúde, dentista acessível, exames</div>
-            </a>
-            
-            <!-- NICHO 3: CARRO -->
-            <a href="carro/multa-desconto.html" class="card">
-                <div class="card-icon">🚗</div>
-                <div class="card-title">CARRO</div>
-                <div class="card-desc">Multas, IPVA, seguro barato, oficina confiável, gasolina</div>
-            </a>
-            
-            <!-- NICHO 4: CASA -->
-            <a href="casa/aluguel-justo.html" class="card">
-                <div class="card-icon">🏠</div>
-                <div class="card-title">CASA</div>
-                <div class="card-desc">Aluguel justo, conta de luz, água, condomínio, reforma</div>
-            </a>
-            
-            <!-- NICHO 5: TECNOLOGIA -->
-            <a href="tech/celular-barato.html" class="card">
-                <div class="card-icon">📱</div>
-                <div class="card-title">TECNOLOGIA</div>
-                <div class="card-desc">Celular barato, internet rápida, plano telefone, streaming</div>
-            </a>
-            
-            <!-- NICHO 6: EMPRESA -->
-            <a href="empresa/contabilidade-barata.html" class="card">
-                <div class="card-icon">💼</div>
-                <div class="card-title">EMPRESA</div>
-                <div class="card-desc">Contabilidade, nota fiscal, MEI, impostos, marketing</div>
-            </a>
-            
-            <!-- NICHO 7: ESTUDO -->
-            <a href="estudo/faculdade-barata.html" class="card">
-                <div class="card-icon">🎓</div>
-                <div class="card-title">ESTUDO</div>
-                <div class="card-desc">Faculdade barata, curso online, material gratuito, inglês</div>
-            </a>
-            
-            <!-- NICHO 8: PET -->
-            <a href="pet/veterinario-24h.html" class="card">
-                <div class="card-icon">🐾</div>
-                <div class="card-title">PET</div>
-                <div class="card-desc">Veterinário 24h, ração barata, plano saúde pet, banho tosa</div>
-            </a>
-            
-            <!-- NICHO 9: CORPO -->
-            <a href="corpo/academia-barata.html" class="card">
-                <div class="card-icon">🏋️</div>
-                <div class="card-title">CORPO</div>
-                <div class="card-desc">Academia barata, personal trainer, suplemento, treino casa</div>
-            </a>
-            
-            <!-- NICHO 10: CASAMENTO -->
-            <a href="casamento/buffet-barato.html" class="card">
-                <div class="card-icon">👰</div>
-                <div class="card-title">CASAMENTO</div>
-                <div class="card-desc">Buffet barato, vestido noiva, fotógrafo, decoração, lista</div>
-            </a>
-            
-            <!-- NICHO 11: VIAGEM -->
-            <a href="viagem/passagem-barata.html" class="card">
-                <div class="card-icon">✈️</div>
-                <div class="card-title">VIAGEM</div>
-                <div class="card-desc">Passagem barata, hotel econômico, pacote turístico, mala</div>
-            </a>
-            
-            <!-- NICHO 12: MERCADO -->
-            <a href="mercado/preco-justo.html" class="card">
-                <div class="card-icon">🛒</div>
-                <div class="card-title">MERCADO</div>
-                <div class="card-desc">Preço justo, promoções, feira barata, economia comida</div>
-            </a>
-        </div>
+            <div class="grid-nichos">
+                <!-- DINHEIRO -->
+                <a href="dinheiro/desconto-boletos.html" class="nicho-card dinheiro-card">
+                    <div class="nicho-icon">💰</div>
+                    <h3 class="nicho-title">DINHEIRO</h3>
+                    <p class="nicho-description">Problemas financeiros resolvidos em minutos</p>
+                    <ul class="nicho-services">
+                        <li>Desconto em boletos atrasados</li>
+                        <li>Reduzir juros do cartão</li>
+                        <li>Limpar nome no SPC</li>
+                        <li>Empréstimo urgente</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- SAÚDE -->
+                <a href="saude/calcular-imc.html" class="nicho-card saude-card">
+                    <div class="nicho-icon">🏥</div>
+                    <h3 class="nicho-title">SAÚDE</h3>
+                    <p class="nicho-description">Cuidados médicos acessíveis e rápidos</p>
+                    <ul class="nicho-services">
+                        <li>Descubra seu IMC + E-book</li>
+                        <li>Remédios com 80% desconto</li>
+                        <li>Consulta SUS em 24h</li>
+                        <li>Plano saúde R$ 50/mês</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- CARRO -->
+                <a href="carro/multa-desconto.html" class="nicho-card carro-card">
+                    <div class="nicho-icon">🚗</div>
+                    <h3 class="nicho-title">CARRO</h3>
+                    <p class="nicho-description">Economize na manutenção e multas</p>
+                    <ul class="nicho-services">
+                        <li>Multa com 40% desconto</li>
+                        <li>IPVA parcelado sem juros</li>
+                        <li>Seguro auto mais barato</li>
+                        <li>Oficina confiável próxima</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- CASA -->
+                <a href="casa/conta-luz.html" class="nicho-card casa-card">
+                    <div class="nicho-icon">🏠</div>
+                    <h3 class="nicho-title">CASA</h3>
+                    <p class="nicho-description">Reduza custos da sua residência</p>
+                    <ul class="nicho-services">
+                        <li>Conta de luz 30% mais barata</li>
+                        <li>Aluguel social/auxílio</li>
+                        <li>Reforma econômica</li>
+                        <li>Móveis usados de qualidade</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- TECNOLOGIA -->
+                <a href="tech/celular-barato.html" class="nicho-card tech-card">
+                    <div class="nicho-icon">📱</div>
+                    <h3 class="nicho-title">TECNOLOGIA</h3>
+                    <p class="nicho-description">Tecnologia acessível para todos</p>
+                    <ul class="nicho-services">
+                        <li>Celular bom por R$ 400</li>
+                        <li>Internet rápida R$ 50/mês</li>
+                        <li>Streaming compartilhado</li>
+                        <li>Notebook estudantil barato</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- EMPRESA -->
+                <a href="empresa/abrir-mei.html" class="nicho-card empresa-card">
+                    <div class="nicho-icon">💼</div>
+                    <h3 class="nicho-title">EMPRESA</h3>
+                    <p class="nicho-description">Soluções para empreendedores</p>
+                    <ul class="nicho-services">
+                        <li>Abrir MEI em 1 dia (grátis)</li>
+                        <li>Nota fiscal sem contador</li>
+                        <li>Empréstimo MEI juros baixos</li>
+                        <li>Marketing Instagram grátis</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- ESTUDO -->
+                <a href="estudo/faculdade-barata.html" class="nicho-card estudo-card">
+                    <div class="nicho-icon">🎓</div>
+                    <h3 class="nicho-title">ESTUDO</h3>
+                    <p class="nicho-description">Educação de qualidade e acessível</p>
+                    <ul class="nicho-services">
+                        <li>Faculdade EAD R$ 99/mês</li>
+                        <li>Inglês grátis (Governo)</li>
+                        <li>Material ENEM/concursos</li>
+                        <li>Notebook estudantil barato</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- PET -->
+                <a href="pet/veterinario-barato.html" class="nicho-card pet-card">
+                    <div class="nicho-icon">🐾</div>
+                    <h3 class="nicho-title">PET</h3>
+                    <p class="nicho-description">Cuidados acessíveis para seu animal</p>
+                    <ul class="nicho-services">
+                        <li>Veterinário 24h barato</li>
+                        <li>Ração premium preço normal</li>
+                        <li>Plano saúde pet R$ 30/mês</li>
+                        <li>Banho tosa econômico</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- CORPO -->
+                <a href="corpo/academia-barata.html" class="nicho-card corpo-card">
+                    <div class="nicho-icon">🏋️</div>
+                    <h3 class="nicho-title">CORPO</h3>
+                    <p class="nicho-description">Saúde e fitness por pouco dinheiro</p>
+                    <ul class="nicho-services">
+                        <li>Academia R$ 49/mês</li>
+                        <li>Personal trainer online</li>
+                        <li>Suplementos com desconto</li>
+                        <li>Dieta personalizada grátis</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- CASAMENTO -->
+                <a href="casamento/buffet-barato.html" class="nicho-card casamento-card">
+                    <div class="nicho-icon">👰</div>
+                    <h3 class="nicho-title">CASAMENTO</h3>
+                    <p class="nicho-description">Casamento dos sonhos sem gastar fortunas</p>
+                    <ul class="nicho-services">
+                        <li>Buffet R$ 50/pessoa</li>
+                        <li>Vestido noiva R$ 300-500</li>
+                        <li>Fotógrafo barato qualidade</li>
+                        <li>Salão locação econômico</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- VIAGEM -->
+                <a href="viagem/passagem-barata.html" class="nicho-card viagem-card">
+                    <div class="nicho-icon">✈️</div>
+                    <h3 class="nicho-title">VIAGEM</h3>
+                    <p class="nicho-description">Viaje mais gastando menos</p>
+                    <ul class="nicho-services">
+                        <li>Passagem aérea R$ 100-200</li>
+                        <li>Hotel R$ 50-80/noite</li>
+                        <li>Pacote All Inclusive barato</li>
+                        <li>Mala grátis nas companhias</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+                
+                <!-- MERCADO -->
+                <a href="mercado/cupons-desconto.html" class="nicho-card mercado-card">
+                    <div class="nicho-icon">🛒</div>
+                    <h3 class="nicho-title">MERCADO</h3>
+                    <p class="nicho-description">Economize nas compras do mês</p>
+                    <ul class="nicho-services">
+                        <li>Cupons supermercado 30% off</li>
+                        <li>Feira barata perto de você</li>
+                        <li>Receitas R$ 5-10 por refeição</li>
+                        <li>Programa alimentos grátis</li>
+                    </ul>
+                    <div class="nicho-price">R$ 2,97 por solução</div>
+                </a>
+            </div>
+        </section>
         
-        <div class="footer">
-            <p>🚀 <strong>Resolvi</strong> - Todas as soluções por apenas R$ 2,97</p>
-            <p style="margin-top: 10px; font-size: 13px;">
-                ✅ Sem cadastro ✅ Sem anúncios ✅ Resultado imediato<br>
-                ⚠️ Para fins educativos. Consulte profissionais quando necessário.
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <h2 class="cta-title">Precisa de ajuda para escolher?</h2>
+            <p>Fale diretamente com nosso time no WhatsApp. Respondemos em até 5 minutos!</p>
+            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de ajuda para escolher uma solução no Resolvi" 
+               class="whatsapp-button" 
+               target="_blank">
+                💬 FALE CONOSCO NO WHATSAPP
+            </a>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#faq">Perguntas Frequentes</a>
+                <a href="#termos">Termos de Uso</a>
+                <a href="#privacidade">Privacidade</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <p>© 2024 <strong>Resolvi</strong>. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.7;">
+                Este site é educativo. Consulte profissionais para decisões importantes.
             </p>
-        </div>
+            <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.7;">
+                Site hospedado em: <strong>https://resolvi-site.github.io/site/</strong>
+            </p>
+        </footer>
     </div>
+    
+    <script>
+        // Análise básica de interação
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Resolvi Index carregado com sucesso!');
+            
+            // Rastreamento de cliques nos cards
+            const cards = document.querySelectorAll('.nicho-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const nicho = this.querySelector('.nicho-title').textContent;
+                    console.log(`Usuário clicou no nicho: ${nicho}`);
+                });
+            });
+            
+            // WhatsApp tracking
+            const whatsappBtn = document.querySelector('.whatsapp-button');
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', function() {
+                    console.log('Usuário clicou no WhatsApp');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
