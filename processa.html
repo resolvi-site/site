@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processando seu pedido - Resolvibr 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇧🇷</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #002776 0%, #009c3b 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .logo {
+            font-size: 42px;
+            font-weight: bold;
+            color: #002776;
+            margin-bottom: 20px;
+        }
+        .logo span { color: #ffdf00; }
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #009c3b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h2 {
+            color: #002776;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #ffdf00;
+        }
+        .produto-info {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #009c3b;
+        }
+        .btn {
+            display: inline-block;
+            background: #009c3b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .rodape-brasil {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            background: #002776;
+            border-radius: 10px;
+            color: #ffdf00;
+            border: 3px solid #009c3b;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 25px; }
+            .logo { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">💰 RESOLVIBR <span>2026</span></div>
+        
+        <div class="loader"></div>
+        
+        <h2>🔄 PROCESSANDO SEU PEDIDO</h2>
+        <p>Estamos preparando tudo para você...</p>
+        
+        <div class="info-box">
+            <p><strong>⚠️ NÃO FECHE ESTA PÁGINA!</strong></p>
+            <p>Você será redirecionado automaticamente para o PagBank em <span id="countdown">3</span> segundos</p>
+        </div>
+        
+        <!-- INFORMAÇÕES DO PRODUTO -->
+        <div id="produtoDetalhes" class="produto-info" style="display: none;">
+            <p><strong>Produto selecionado:</strong> <span id="produtoNome">Carregando...</span></p>
+            <p><strong>Valor:</strong> R$ <span id="produtoValor">0,00</span></p>
+            <p><strong>Data:</strong> <span id="dataAtual">2026</span></p>
+        </div>
+        
+        <p>Após o pagamento no PagBank, você será redirecionado automaticamente para a página com seu conteúdo.</p>
+        
+        <div class="rodape-brasil">
+            <div style="font-size: 20px; margin-bottom: 10px;">🇧🇷</div>
+            <p style="color: white; font-weight: bold;">Feito com carinho para os brasileiros em 2026</p>
+        </div>
+    </div>
+
+    <script>
+        // Pegar qual produto foi escolhido
+        const urlParams = new URLSearchParams(window.location.search);
+        const produto = urlParams.get('produto'); // basico, premium ou combo
+        
+        // Validar produto
+        if (!produto || !['basico', 'premium', 'combo'].includes(produto)) {
+            alert('Produto inválido. Redirecionando para página inicial...');
+            window.location.href = 'index.html';
+        }
+        
+        // Informações dos produtos
+        const produtosInfo = {
+            'basico': {
+                nome: 'Guia Completo de Renegociação',
+                valor: '12,90',
+                descricao: '15 números importantes + Leis consumeristas'
+            },
+            'premium': {
+                nome: 'Educação Financeira Premium',
+                valor: '27,79', 
+                descricao: 'Guia Básico + 3 E-books completos'
+            },
+            'combo': {
+                nome: 'Combo Completo Resolvibr',
+                valor: '34,90',
+                descricao: 'Tudo do Básico e Premium + Guia do Investidor'
+            }
+        };
+        
+        // Mostrar informações do produto
+        const info = produtosInfo[produto];
+        document.getElementById('produtoNome').textContent = info.nome;
+        document.getElementById('produtoValor').textContent = info.valor;
+        document.getElementById('dataAtual').textContent = new Date().getFullYear();
+        document.getElementById('produtoDetalhes').style.display = 'block';
+        
+        // Salvar produto no localStorage (para a página obrigado.html usar)
+        localStorage.setItem('produto_comprado', produto);
+        localStorage.setItem('data_compra', new Date().toISOString());
+        localStorage.setItem('produto_nome', info.nome);
+        localStorage.setItem('produto_valor', info.valor);
+        
+        // Links do PagBank (SEUS LINKS REAIS)
+        const linksPagBank = {
+            'basico': 'https://pag.ae/81rh-Qmra',
+            'premium': 'https://pag.ae/81ri1DmTK',
+            'combo': 'https://pag.ae/81ri2o7wa'
+        };
+        
+        // Contagem regressiva
+        let seconds = 3;
+        const countdownElement = document.getElementById('countdown');
+        const countdownInterval = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                redirecionarParaPagBank();
+            }
+        }, 1000);
+        
+        // Função para redirecionar
+        function redirecionarParaPagBank() {
+            const link = linksPagBank[produto];
+            if (link) {
+                // Salvar também em sessionStorage para backup
+                sessionStorage.setItem('produto_atual', produto);
+                sessionStorage.setItem('produto_info', JSON.stringify(info));
+                
+                console.log(`Redirecionando para PagBank: ${produto} - R$ ${info.valor}`);
+                
+                // Redirecionar para PagBank
+                window.location.href = link;
+            } else {
+                alert('Erro: Link de pagamento não encontrado.');
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Redirecionar manualmente se clicar em algum lugar
+        document.addEventListener('click', function() {
+            clearInterval(countdownInterval);
+            redirecionarParaPagBank();
+        });
+        
+        // Redirecionar automaticamente após 5 segundos (caso o contador falhe)
+        setTimeout(() => {
+            clearInterval(countdownInterval);
+            redirecionarParaPagBank();
+        }, 5000);
+        
+        // Mostrar no console para debug
+        console.log(`Processando produto: ${produto}`);
+        console.log(`Valor: R$ ${info.valor}`);
+        console.log(`Link PagBank: ${linksPagBank[produto]}`);
+    </script>
+</body>
+</html>

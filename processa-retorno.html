@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processando retorno do PagBank</title>
+</head>
+<body>
+    <script>
+        // Pegar parâmetros da URL do PagBank
+        const urlParams = new URLSearchParams(window.location.search);
+        const transaction_id = urlParams.get('transaction_id');
+        const status = urlParams.get('status');
+        
+        // Verificar se pagamento foi aprovado
+        if (status === '3' || status === '4') {
+            // Pagamento aprovado
+            
+            // TEMOS UM PROBLEMA: Não sabemos qual produto foi comprado!
+            // O PagBank não envia essa informação na URL de retorno
+            
+            // SOLUÇÃO 1: Salvar no localStorage antes de ir pro PagBank
+            const produto = localStorage.getItem('produto_comprado');
+            
+            if (produto === 'basico') {
+                // Salvar confirmação de pagamento
+                localStorage.setItem('pagamento_basico_confirmado', 'true');
+                localStorage.setItem('transacao_id', transaction_id);
+                
+                // Ir para obrigado.html
+                window.location.href = 'obrigado.html?transaction_id=' + transaction_id;
+                
+            } else if (produto === 'premium' || produto === 'combo') {
+                // Salvar acesso premium
+                localStorage.setItem('premium_access', 'true');
+                localStorage.setItem('premium_transaction', transaction_id);
+                
+                // Ir para area-membro.html
+                window.location.href = 'area-membro.html?transaction_id=' + transaction_id;
+            }
+            
+        } else {
+            // Pagamento não aprovado - voltar para index
+            alert('Pagamento não foi aprovado. Status: ' + status);
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
